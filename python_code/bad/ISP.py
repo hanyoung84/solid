@@ -1,8 +1,20 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+
+
+
 
 from abc import ABCMeta, abstractmethod
 import time
+
+
+
+class Worker(AbstractWorker):
+
+    def work(self):
+        print("I'm normal worker. I'm working.")
+
+    def eat(self):
+        print("Lunch break....(5 secs)")
+        time.sleep(5)
 
 class AbstractWorker(object):
     __metaclass__ = ABCMeta
@@ -14,15 +26,6 @@ class AbstractWorker(object):
     @abstractmethod
     def eat(self):
         pass
-
-class Worker(AbstractWorker):
-
-    def work(self):
-        print("I'm normal worker. I'm working.")
-
-    def eat(self):
-        print("Lunch break....(5 secs)")
-        time.sleep(5)
 
 class SuperWorker(AbstractWorker):
 
@@ -65,20 +68,15 @@ class Robot(AbstractWorker):
 
     manager = Manager()
     manager.set_worker(Worker())
-    # Make normal worker works.
     manager.manage()
-    # lunch break
     manager.lunch_break()
-
-    # super worker
+    manager.set_worker(Robot())
+    manager.manage()
+    manager.lunch_break()
     manager.set_worker(SuperWorker())
     manager.manage()
     manager.lunch_break()
 
-    manager.set_worker(Robot())
-    manager.manage()
-    # However, a robot can eat.....
-    manager.lunch_break()
-
 if __name__ == '__main__':
+    
     main()

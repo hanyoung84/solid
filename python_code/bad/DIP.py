@@ -7,6 +7,7 @@ class Worker(object):
         print("I'm working!!")
 
 
+
 class Manager(object):
 
     def __init__(self):
@@ -27,6 +28,7 @@ class SuperWorker(object):
     def work(self):
         print("I work very hard!!!")
 
+
 # OK... now you can see what happend if we want the `Manager` to support `SuperWorker`.
 #  1. The `set_worker` must be modified or it will not pass the type-checking.
 #  2. The `manage` method should be re-test, which means you may or may not have to 
@@ -45,6 +47,7 @@ def main():
         manager.set_worker(super_worker)
     except AssertionError:
         print("manager fails to support super_worker....")
+
 
 if __name__ == "__main__":
     main()

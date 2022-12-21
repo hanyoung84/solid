@@ -59,6 +59,7 @@ class Robot(AbstractWorker):
         print("I'm a robot. I'm working....")
 
     def eat(self):
+
         print("I don't need to eat....")   # This code doing nothing but it is a must. (Bad!))
 
 
